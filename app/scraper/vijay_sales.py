@@ -30,7 +30,7 @@ def run_vijaysales_scraper(query: str, country: str) -> list[SearchResult]:
             product_cards = page.query_selector_all("div.plp-vertical-products div.product-card")
             logger.info(f"Found {len(product_cards)} products on Vijay Sales")
 
-            for card in product_cards[:10]:
+            for card in product_cards[:2]:
                 try:
                     link_el = card.query_selector("a.product-card__link")
                     name_el = card.query_selector("div.product-name")

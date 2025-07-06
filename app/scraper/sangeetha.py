@@ -26,7 +26,7 @@ def run_sangeetha_playwright(query: str, country: str) -> list[SearchResult]:
         items = page.query_selector_all("div.product-wrapper div.product-list")
         logger.info(f"Found {len(items)} results on Sangeetha")
 
-        for item in items[:10]:
+        for item in items[:2]:
             try:
                 product_details = item.query_selector("div.product-details")
                 if not product_details:

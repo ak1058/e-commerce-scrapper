@@ -22,7 +22,7 @@ def run_playwright_sync(query: str, country: str) -> list[SearchResult]:
         items = page.query_selector_all("div[data-component-type='s-search-result']")
         logger.info(f"Found {len(items)} results on Amazon")
 
-        for item in items[:15]:
+        for item in items[:5]:  
             try:
                 link_el = item.query_selector("a.a-link-normal.s-link-style")
                 title_el = link_el.query_selector("span") if link_el else None
@@ -41,10 +41,16 @@ def run_playwright_sync(query: str, country: str) -> list[SearchResult]:
                 if any(bad_word in title.lower() for bad_word in blacklist_keywords):
                     continue
 
+                
+                query_terms = query.lower().split()
+                if not all(term in title.lower() for term in query_terms):
+                    continue
+
+                # Build full link and clean price
                 relative_link = link_el.get_attribute("href")
                 full_link = "https://www.amazon.in" + relative_link
 
-                raw_price = price_el.inner_text().strip()  
+                raw_price = price_el.inner_text().strip()
                 clean_price = raw_price.replace("₹", "").replace(",", "").strip()
                 price = float(clean_price)
 

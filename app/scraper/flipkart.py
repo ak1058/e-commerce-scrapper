@@ -22,7 +22,7 @@ async def fetch(query: str, country: str) -> list[SearchResult]:
             items = await page.query_selector_all("a.CGtC98")  
             logger.info(f"Found {len(items)} results on Flipkart")
 
-            for item in items[:10]:  # limit to top 10
+            for item in items[:2]:  
                 try:
                     title_el = await item.query_selector("div.KzDlHZ")
                     price_el = await item.query_selector("div.Nx9bqj")

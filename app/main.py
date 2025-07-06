@@ -33,14 +33,12 @@ async def compare_prices(query: ProductQuery):
         results += await amazon.fetch(query.query, query.country)
 
     elif query.country.lower() == "in":
-        # Run async and sync scrapers
         results += await amazon_in.fetch(query.query, query.country)
         results += await flipkart.fetch(query.query, query.country)
         results += await sangeetha.fetch(query.query, query.country)  
         results += await reliance_digital.fetch(query.query, query.country)
         results += await tata_croma.fetch(query.query, query.country)
         results += await vijay_sales.fetch(query.query, query.country)
-        return results
 
 
 

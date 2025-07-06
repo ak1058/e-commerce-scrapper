@@ -71,7 +71,7 @@ def run_tata_croma_scraper(query: str, country: str) -> list[SearchResult]:
         product_items = page.query_selector_all("ul.product-list li.product-item")
         logger.info(f"Found {len(product_items)} products on Tata Croma")
 
-        for item in product_items[:10]:
+        for item in product_items[:2]:
             try:
                 title_el = item.query_selector("h3.product-title a")
                 price_el = item.query_selector("span[data-testid='new-price']")

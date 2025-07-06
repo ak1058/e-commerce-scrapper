@@ -25,7 +25,7 @@ def run_reliance_scraper(query: str, country: str) -> list[SearchResult]:
         product_cards = page.query_selector_all("div.product-card")
         logger.info(f"Found {len(product_cards)} product cards on Reliance Digital")
 
-        for card in product_cards[:10]:  
+        for card in product_cards[:2]:  
             try:
                 detail_div = card.query_selector(".product-card-details")
                 if not detail_div:
