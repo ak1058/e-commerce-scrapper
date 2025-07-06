@@ -40,7 +40,7 @@ async def compare_prices(query: ProductQuery):
         results += await reliance_digital.fetch(query.query, query.country)
         results += await tata_croma.fetch(query.query, query.country)
         results += await vijay_sales.fetch(query.query, query.country)
-        return []
+        return results
 
 
 
